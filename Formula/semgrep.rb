@@ -135,21 +135,18 @@ class Semgrep < Formula
 
       system "opam", "exec", "--", "make", "setup"
 
-      # Install spacegrep
-      system "opam", "exec", "--", "make", "build-spacegrep"
-      bin.install "spacegrep/_build/default/src/bin/Space_main.exe" => "spacegrep"
-
       # Install tree-sitter
       cd "ocaml-tree-sitter" do
         system "opam", "install", "-y", "."
       end
 
-      # Install semgrep-core
+      # Install semgrep-core and spacegrep
       cd "semgrep-core" do
         system "opam", "install", "--deps-only", "-y", "."
         system "opam", "exec", "--", "make", "all"
         system "opam", "exec", "--", "make", "install"
         bin.install "_build/install/default/bin/semgrep-core" => "semgrep-core"
+        bin.install "_build/install/default/bin/spacegrep" => "spacegrep"
       end
     end
 
