@@ -3,16 +3,16 @@ class Commitizen < Formula
 
   desc "Defines a standard way of committing rules and communicating it"
   homepage "https://commitizen-tools.github.io/commitizen/"
-  url "https://files.pythonhosted.org/packages/74/1f/929bd6acc4c79663e5c5fa3b56120bab2412e3a7035cf63e146082824bb8/commitizen-2.17.11.tar.gz"
-  sha256 "30cbfe6ee17f598f02ae4f820d64cdf499d7b93e24a3f69f9e728103dd1c81c2"
+  url "https://files.pythonhosted.org/packages/ea/fc/9c6685366768d54b0af4cf265dc844633642cb4472c8d23da5873283cc0e/commitizen-2.17.13.tar.gz"
+  sha256 "8ff83a6ff33db9bf1c9f6ad50829ca0823b09155787adb5d12939e0c338ee978"
   license "MIT"
   head "https://github.com/commitizen-tools/commitizen.git"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "f4e94117f15222d2de2fd04b20b931a83bdd83f5485f3e52569163222f39c242"
-    sha256 cellar: :any_skip_relocation, big_sur:       "b1be49aba2d294c117f623a7bbdb1e99c9355ba1e640cff1f14ba4ee2167e2d1"
-    sha256 cellar: :any_skip_relocation, catalina:      "5828383b37d9f03680c382b5e2c1fb3aa414d206b8b118e6a99d153f19d1eabb"
-    sha256 cellar: :any_skip_relocation, mojave:        "af5900ae160a3780e300080f74395ab60e996daccddbe44ff433e870c0e90788"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "25a449f84f0291f8e45fc6a39e17e90850b9e219560dd849bfc6af3ad16542e1"
+    sha256 cellar: :any_skip_relocation, big_sur:       "3a7f8892e7c013c535481d674c1c2952c7d370e3c159d00b7ec53a9f6127b174"
+    sha256 cellar: :any_skip_relocation, catalina:      "d501718a1c016e84ca7b7da3459fadf1b3f5b52f622d4a5e780cc67d5a5dcf36"
+    sha256 cellar: :any_skip_relocation, mojave:        "26719c2268cdb7a5222831a9665fb728915290be30810aa720cff455039747dc"
   end
 
   depends_on "python@3.9"

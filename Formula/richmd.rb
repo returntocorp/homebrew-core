@@ -3,15 +3,15 @@ class Richmd < Formula
 
   desc "Format Markdown in the terminal with Rich"
   homepage "https://github.com/willmcgugan/rich"
-  url "https://files.pythonhosted.org/packages/2f/b7/b8b950458f88c6d74978a37ad1d1fb9885464372fcb3d4077c2d9186a5c3/rich-10.4.0.tar.gz"
-  sha256 "6e8a3e2c61e6cf6193bfcffbb89865a0973af7779d3ead913fdbbbc33f457c2c"
+  url "https://files.pythonhosted.org/packages/72/f5/1f06eb039318ae8eb4d13e4abe52dd0b1fdd466b35cf9e52a2e505509532/rich-10.6.0.tar.gz"
+  sha256 "128261b3e2419a4ef9c97066ccc2abbfb49fa7c5e89c3fe4056d00aa5e9c1e65"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "36eb2b0d1a88fd863743f6884f8dde70d9f71776bf2742c3f0997a2ba02b12bc"
-    sha256 cellar: :any_skip_relocation, big_sur:       "b4060d04755187497020d049ddc94a2f3bcbd81d697933a8a70861d33cfa50d2"
-    sha256 cellar: :any_skip_relocation, catalina:      "bca84a8f63b9b3eb51e4c4d6154714c63c4040044b5ab4289c9501fd4e447b4e"
-    sha256 cellar: :any_skip_relocation, mojave:        "87390aad5c17f895d115d83d21491204843fdcb89c44d0f5e4e7b1c16dd9eafc"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "f63a3759bb14625fa81abadbd803fc938a947f67f317210ae6e4c37c2cdd2f99"
+    sha256 cellar: :any_skip_relocation, big_sur:       "61a4d1802bfde9baf093ed35e37453deb0007a2505b1af64a7c0c261285a95d2"
+    sha256 cellar: :any_skip_relocation, catalina:      "11085a32bcf262e6f77dcc4dad7697081a8716e78caf2a4f2d0d7ae7421c2ed0"
+    sha256 cellar: :any_skip_relocation, mojave:        "0eb26d9e1fc65318ee437ca7a721a5e6aa9d7778aad9d854aa0d75fdfd4d166a"
   end
 
   depends_on "python@3.9"

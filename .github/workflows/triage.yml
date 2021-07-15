@@ -3,7 +3,8 @@ name: Triage tasks
 on: pull_request_target
 
 concurrency:
-  group: "${{ github.ref }}"
+  group: "triage-${{ github.event.number }}"
+  cancel-in-progress: true
 
 jobs:
   triage:
@@ -35,7 +36,7 @@ jobs:
                 }, {
                     "label": "bottle unneeded",
                     "path": "Formula/.+",
-                    "content": "\n  (bottle :unneeded|depends_on :linux)\n"
+                    "content": "\n  (bottle :unneeded)\n"
                 }, {
                     "label": "no ARM bottle",
                     "path": "Formula/.+",
@@ -83,6 +84,10 @@ jobs:
                     "path": "Formula/.+",
                     "content": "depends_on :linux"
                 }, {
+                    "label": "macos-only",
+                    "path": "Formula/.+",
+                    "content": "depends_on :macos"
+                }, {
                     "label": "lua",
                     "path": "Formula/.+",
                     "content": "depends_on \"(lua|luajit|luajit-openresty)(@[0-9.]+)?\""
@@ -120,12 +125,24 @@ jobs:
                     "path": "Formula/.+",
                     "content": "system \"swift\", \"build\""
                 }, {
+                    "label": "CI-long-timeout",
+                    "path": "Formula/(boost|qt).rb",
+                    "keep_if_no_match": true
+                }, {
+                    "label": "CI-build-dependents-from-source",
+                    "path": "Formula/(cabal-install|docbook-xsl|emscripten|erlang|ghc|go|ocaml|ocaml-findlib|ocaml-num|openjdk|rust).rb",
+                    "keep_if_no_match": true
+                }, {
+                    "label": "CI-skip-recursive-dependents",
+                    "path": "Formula/(gettext|openssl).rb",
+                    "keep_if_no_match": true
+                }, {
                     "label": "CI-linux-wheezy",
                     "path": "Formula/(zlib|patchelf|binutils).rb",
                     "keep_if_no_match": true
                 }, {
                     "label": "CI-linux-self-hosted",
-                    "path": "Formula/(gdbm|go|openssl|python|rust|sqlite)(@[0-9.]+)?.rb",
+                    "path": "Formula/(gdbm|go|openssl@1.1|python@3.9|rust|sqlite).rb",
                     "keep_if_no_match": true
                 }, {
                     "label": "bump-formula-pr",

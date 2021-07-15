@@ -4,22 +4,21 @@ class Neko < Formula
   url "https://github.com/HaxeFoundation/neko/archive/v2-3-0/neko-2.3.0.tar.gz"
   sha256 "850e7e317bdaf24ed652efeff89c1cb21380ca19f20e68a296c84f6bad4ee995"
   license "MIT"
-  revision 4
+  revision 6
   head "https://github.com/HaxeFoundation/neko.git"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any, arm64_big_sur: "ece8bc64b6653a08e64d1641bb8ce38ab2c1b9652953ae4ab4ade96c7cbbbce4"
-    sha256 cellar: :any, big_sur:       "b709a1c46fd41c3d0f2e09ef65624e5e286408c885b8eb773806533d251c5550"
-    sha256 cellar: :any, catalina:      "3c3942cb5d805125d765c401688fb8dc8a66047d21e1e9e10522ecd94de58c21"
-    sha256 cellar: :any, mojave:        "6fbefe32d592b7fe197ea6e2e891b9da0d2d34ead8e5a44306714d16c4b40042"
+    sha256 arm64_big_sur: "db3b62ea32c9b528423997eb79bab7b96463f3074e5452499a1ea87f742129f0"
+    sha256 big_sur:       "ca0a54255e775f29b6867eda77f2ff115424c77293755847eb8edf4a8d5bb142"
+    sha256 catalina:      "f1adf8d28ac342d233f018c7263c66072969e97ff4efd7c1e0645b80083332dd"
+    sha256 mojave:        "49ecf3a704be8b5451af12ce5ccb8bf921141e3243ac525794a61e22c987f18e"
   end
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "pkg-config" => :build
   depends_on "bdw-gc"
-  depends_on "mbedtls"
+  depends_on "mbedtls@2"
   depends_on "openssl@1.1"
   depends_on "pcre"
 

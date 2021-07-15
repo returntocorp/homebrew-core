@@ -3,16 +3,17 @@ class Global < Formula
 
   desc "Source code tag system"
   homepage "https://www.gnu.org/software/global/"
-  url "https://ftp.gnu.org/gnu/global/global-6.6.6.tar.gz"
-  mirror "https://ftpmirror.gnu.org/global/global-6.6.6.tar.gz"
-  sha256 "758078afff98d4c051c58785c7ada3ed1977fabb77f8897ff657b71cc62d4d5d"
+  url "https://ftp.gnu.org/gnu/global/global-6.6.7.tar.gz"
+  mirror "https://ftpmirror.gnu.org/global/global-6.6.7.tar.gz"
+  sha256 "69a0f77f53827c5568176c1d382166df361e74263a047f0b3058aa2f2ad58a3c"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 arm64_big_sur: "f96368bfa6146b1e1ab6df7fa7a830edac7a733e5e5b166da466279cd95f7f24"
-    sha256 big_sur:       "b46b54119d50cad76ba3d214e3bfa746f3734fd36da87b59c8ad94368dd635c3"
-    sha256 catalina:      "60e5977d1120c5e9f5044a424e74626e9ac713f9b5df994e6f3dc65ce9bc121e"
-    sha256 mojave:        "2090e947b5325e6c6927d1c7ada590cedfbe765722eb2376b6690ebacf7bfdbf"
+    sha256 arm64_big_sur: "ffba636507257bfb9dffd90dc114f1ad3528edf724beae0d200e3b5817f642bf"
+    sha256 big_sur:       "598cb4071a8d708c46becd27983443b6c14259c797d8a61718b0f1bb9094ae6f"
+    sha256 catalina:      "c476c6bee46e116a6dbe93754221132f8cc1cfbdb88d10c08d38b65c4e77b460"
+    sha256 mojave:        "37c6a139a405bbd869bcd8175e20a0e488ce0176646a0dbbfed3d9ede030977f"
+    sha256 x86_64_linux:  "13177da144e43810cbd458e90c24e160bf297b59db34208274973891f64da974"
   end
 
   head do
@@ -32,7 +33,7 @@ class Global < Formula
   uses_from_macos "ncurses"
 
   on_linux do
-    depends_on "libtool" => :build
+    depends_on "libtool"
   end
 
   skip_clean "lib/gtags"

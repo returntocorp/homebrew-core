@@ -12,6 +12,7 @@ class Docker < Formula
     sha256 cellar: :any_skip_relocation, big_sur:       "626a28393a8e833b5848a52c1fbe2b71d63e1540c4c689216c3d2b27d2a871b4"
     sha256 cellar: :any_skip_relocation, catalina:      "4d09b76ce85c651cb4454ddf2ed8b3f680231793747f5d997a1a41111e92e997"
     sha256 cellar: :any_skip_relocation, mojave:        "7f947fa8659c8b81daf5fdf3fe065d97d7443db9653fdfbcb5e91de724635d22"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "61eb6f531596b84a10ddd5c20e0c8b371b886600bfe1aa13cc0134c3d8c1ef12"
   end
 
   depends_on "go" => :build
@@ -25,14 +26,11 @@ class Docker < Formula
     dir = buildpath/"src/github.com/docker/cli"
     dir.install (buildpath/"").children
     cd dir do
-      commit = Utils.git_short_head
-      build_time = Time.now.utc.strftime("%Y-%m-%dT%H:%M:%SZ")
-      ldflags = ["-X \"github.com/docker/cli/cli/version.BuildTime=#{build_time}\"",
-                 "-X github.com/docker/cli/cli/version.GitCommit=#{commit}",
+      ldflags = ["-X \"github.com/docker/cli/cli/version.BuildTime=#{time.iso8601}\"",
+                 "-X github.com/docker/cli/cli/version.GitCommit=#{Utils.git_short_head}",
                  "-X github.com/docker/cli/cli/version.Version=#{version}",
-                 "-X \"github.com/docker/cli/cli/version.PlatformName=Docker Engine - Community\""]
-      system "go", "build", "-o", bin/"docker", "-ldflags", ldflags.join(" "),
-             "github.com/docker/cli/cmd/docker"
+                 "-X \"github.com/docker/cli/cli/version.PlatformName=Docker Engine - Community\""].join(" ")
+      system "go", "build", *std_go_args(ldflags: ldflags), "github.com/docker/cli/cmd/docker"
 
       Pathname.glob("man/*.[1-8].md") do |md|
         section = md.to_s[/\.(\d+)\.md\Z/, 1]

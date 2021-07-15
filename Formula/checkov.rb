@@ -4,15 +4,16 @@ class Checkov < Formula
   desc "Prevent cloud misconfigurations during build-time for IaC tools"
   homepage "https://www.checkov.io/"
   # checkov should only be updated every 15 releases on multiples of 15
-  url "https://files.pythonhosted.org/packages/42/60/b37ea711e89ef0e47fb591560829122862443e7cc84b1ff9fcb7e5626cc0/checkov-2.0.225.tar.gz"
-  sha256 "7ae8c202ac9ac4854bfc171a89abe08ab15ca2a452f321ac794178ece9fab61a"
+  url "https://files.pythonhosted.org/packages/79/33/30e4fd455bc3ec2e7ff3bf595cf8579dfae2f6edf0e39186428c482b825f/checkov-2.0.255.tar.gz"
+  sha256 "6c3d75459a6170f9533e66fe0e3e9236b3351d2c22d18ca88928fdf67da4c3ca"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "d111b2b5e6802b1d4433a7e6b9f388d7e7576aaf2e082a549ae1c8ef8f76e930"
-    sha256 cellar: :any_skip_relocation, big_sur:       "69f8ee0fc1f3a3911cf6336a3d2926ae4eb574bb432f20498d4781f9943c49ba"
-    sha256 cellar: :any_skip_relocation, catalina:      "255a1a4f32ea1d58a96a2d4650e0d8ed6f66e393aad441c57926a33c884f6fde"
-    sha256 cellar: :any_skip_relocation, mojave:        "0f5a271f23beebced95328473b315e02ca0db18cf8bef59824c8bcc84725f123"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "a5b05a2a3fbda3e4e4a2c0137831d2d090348e9ef0163c700991690cb3e006f0"
+    sha256 cellar: :any_skip_relocation, big_sur:       "667056e8e8c4f8c64d5eb8c136675367c192a00c2e903f421c0d3cc983182017"
+    sha256 cellar: :any_skip_relocation, catalina:      "490ff0acdf4b01edace700c0338ff15fd9c6dc7b04d9a459f9329aa91f491cf4"
+    sha256 cellar: :any_skip_relocation, mojave:        "2e86330e5161a17c71c79eca1066e5c226fce17e893b9bb4bfee8d1fea17dac5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "76ef262015123aecf32155fac4722a358350f0190f8dfe72be147ef1af44431d"
   end
 
   depends_on "python-tabulate"
@@ -30,13 +31,13 @@ class Checkov < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/51/07/4a40d0188a51398138d4abff7b3c26da476b139a19f24299e71626d98091/boto3-1.17.101.tar.gz"
-    sha256 "77ebaa3645ae153978a0f2c492502fef3804fe0e693abc7dc74620e4884afe67"
+    url "https://files.pythonhosted.org/packages/4d/67/f27c22aad4221ac647a239f2f56fa7d86d8a09b21ad80744784fe371d1cf/boto3-1.17.106.tar.gz"
+    sha256 "c0740378b913ca53f5fc0dba91e99a752c5a30ae7b58a0c5e54e3e2a68df26c5"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/73/37/27b163e4bb3da2356ba826481c573dddee19616a5f5871e9cade3b211378/botocore-1.20.101.tar.gz"
-    sha256 "f7a44fab1a3739ca54e7f72e8625b71574f8218f05349e59d3b871c887444edd"
+    url "https://files.pythonhosted.org/packages/91/21/e5d47bb39b19056e98d8caf93561af123074380f2d1c420151e723d0ae80/botocore-1.20.106.tar.gz"
+    sha256 "6d5c983808b1d00437f56d0c08412bd82d9f8012fdb77e555f97277a1fd4d5df"
   end
 
   resource "cached-property" do
@@ -75,8 +76,8 @@ class Checkov < Formula
   end
 
   resource "ConfigArgParse" do
-    url "https://files.pythonhosted.org/packages/dd/00/1d4e01c8f7d9b4e701f0ddba8c5a5d074e919f1a972196897d775ec7c3c0/ConfigArgParse-1.5.tar.gz"
-    sha256 "dded3590373b7dae6ce6d0afeb4ae3def74761fdd78730952863914d4cb4bdb5"
+    url "https://files.pythonhosted.org/packages/d9/ad/d82750ad3a9e3419425eeeef7fbb5c8381dc8ec64a9894ddc3854837b10f/ConfigArgParse-1.5.1.tar.gz"
+    sha256 "371f46577e76ec71a183b88378f36dd09f4b946f60fe60712f411b020f26b812"
   end
 
   resource "contextlib2" do
@@ -165,13 +166,18 @@ class Checkov < Formula
   end
 
   resource "packaging" do
-    url "https://files.pythonhosted.org/packages/86/3c/bcd09ec5df7123abcf695009221a52f90438d877a2f1499453c6938f5728/packaging-20.9.tar.gz"
-    sha256 "5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"
+    url "https://files.pythonhosted.org/packages/df/86/aef78bab3afd461faecf9955a6501c4999933a48394e90f03cd512aad844/packaging-21.0.tar.gz"
+    sha256 "7dc96269f53a4ccec5c0670940a4281106dd0bb343f47b7471f779df49c2fbe7"
   end
 
   resource "policy-sentry" do
     url "https://files.pythonhosted.org/packages/2b/40/96773da0a8ecad688bd2b870c21dfa6949cda6cbfffafa9935e7d462cd28/policy_sentry-0.11.10.tar.gz"
     sha256 "2c3e4405a72f8284f7a3c987fbd666b3ae63fd095101e004e9ee6a1fb1ab76ff"
+  end
+
+  resource "policyuniverse" do
+    url "https://files.pythonhosted.org/packages/bc/b7/c767eb476523d5586e2d1ff77a63b4094b5a3bc3d41d139d159bcc1460f3/policyuniverse-1.3.8.20210630.tar.gz"
+    sha256 "aa6fb334a6fbfdd5616868eee07f04548950ac293904985a9756b88cb7fe8ff3"
   end
 
   resource "pyparsing" do
@@ -225,8 +231,13 @@ class Checkov < Formula
   end
 
   resource "tqdm" do
-    url "https://files.pythonhosted.org/packages/f2/9c/99aae7670351c694c60c72e3cc834b7eab396f738b391bd0bdfc5101a663/tqdm-4.61.1.tar.gz"
-    sha256 "24be966933e942be5f074c29755a95b315c69a91f839a29139bf26ffffe2d3fd"
+    url "https://files.pythonhosted.org/packages/0d/dd/78f7e080d3bfc87fc19bed54513b430659d38efb2d9ea6e3ad815a665a02/tqdm-4.61.2.tar.gz"
+    sha256 "8bb94db0d4468fea27d004a0f1d1c02da3cdedc00fe491c0de986b76a04d6b0a"
+  end
+
+  resource "typing-extensions" do
+    url "https://files.pythonhosted.org/packages/aa/55/62e2d4934c282a60b4243a950c9dbfa01ae7cac0e8d6c0b5315b87432c81/typing_extensions-3.10.0.0.tar.gz"
+    sha256 "50b6f157849174217d0656f99dc82fe932884fb250826c18350e159ec6cdf342"
   end
 
   resource "update-checker" do

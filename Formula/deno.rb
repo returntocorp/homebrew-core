@@ -1,15 +1,15 @@
 class Deno < Formula
   desc "Secure runtime for JavaScript and TypeScript"
   homepage "https://deno.land/"
-  url "https://github.com/denoland/deno/releases/download/v1.11.3/deno_src.tar.gz"
-  sha256 "dbee2395ad31df6308c9ae32049b9afa90da92615229a9bc7fc001b955c0689f"
+  url "https://github.com/denoland/deno/releases/download/v1.12.0/deno_src.tar.gz"
+  sha256 "5208781164573bed2a3f438c72cbbe4c88209a0795d996d07a1984193420535c"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "3fcc35cd5228fa80ef32bad774887ef5ee4662e2432c13631c409ec4a70f683b"
-    sha256 cellar: :any_skip_relocation, big_sur:       "660afb39758816a0e7cd5b62992d45d56e27ec583551d7b5cde7c3319e71df64"
-    sha256 cellar: :any_skip_relocation, catalina:      "61dca935cd5c58c402b7bb9b5e8dca0ca8bca3e4938658a8664411b641aea71f"
-    sha256 cellar: :any_skip_relocation, mojave:        "6d7273960cddfa9bee0d3fa161a2d4f5541f7e012db3a25c2ce972c951ca498d"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "457203a36792c7fa9145433fa1092be7d75a2e77d7985b1ba1a67634e7ddf23e"
+    sha256 cellar: :any_skip_relocation, big_sur:       "66d7746cf16ac96675f523bf75ffc8f13dd46224fead59cbdf11ca8505c564d3"
+    sha256 cellar: :any_skip_relocation, catalina:      "c82a923bc350dc67780817d827c14e421c4cde9116d22968e0f1ded2e023b80f"
+    sha256 cellar: :any_skip_relocation, mojave:        "ffb7f4f879cd9a8a733269fc0d829b242e22013309f96fc01eb8d1d2a8b1120c"
   end
 
   depends_on "llvm" => :build
@@ -22,11 +22,12 @@ class Deno < Formula
 
   # To find the version of gn used:
   # 1. Find rusty_v8 version: https://github.com/denoland/deno/blob/v#{version}/core/Cargo.toml
-  # 2. Find buildtools submodule commit: https://github.com/denoland/rusty_v8/tree/v#{rusty_v8_version}
-  # 3. Check gn_version: https://github.com/denoland/chromium_buildtools/blob/#{buildtools_commit}/DEPS
+  # 2. Find ninja_gn_binaries tag: https://github.com/denoland/rusty_v8/tree/v#{rusty_v8_version}/tools/ninja_gn_binaries.py
+  # 3. Find short gn commit hash from commit message: https://github.com/denoland/ninja_gn_binaries/tree/#{ninja_gn_binaries_tag}
+  # 4. Find full gn commit hash: https://gn.googlesource.com/gn.git/+/#{gn_commit}
   resource "gn" do
     url "https://gn.googlesource.com/gn.git",
-        revision: "dfcbc6fed0a8352696f92d67ccad54048ad182b3"
+        revision: "53d92014bf94c3893886470a1c7c1289f8818db0"
   end
 
   def install

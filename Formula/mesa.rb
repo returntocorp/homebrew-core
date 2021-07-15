@@ -3,10 +3,19 @@ class Mesa < Formula
 
   desc "Graphics Library"
   homepage "https://www.mesa3d.org/"
-  url "https://archive.mesa3d.org/mesa-21.1.3.tar.xz"
-  sha256 "cbe221282670875ffd762247b6a2c95dcee91d0a34c29802c75ef761fc891e69"
   license "MIT"
   head "https://gitlab.freedesktop.org/mesa/mesa.git", branch: "main"
+
+  stable do
+    url "https://archive.mesa3d.org/mesa-21.1.5.tar.xz"
+    sha256 "022c7293074aeeced2278c872db4fa693147c70f8595b076cf3f1ef81520766d"
+
+    # should be removed in mesa 21.2
+    patch do
+      url "https://gitlab.freedesktop.org/mesa/mesa/-/commit/89b4f337d50c01c5782e19ee40b57a6c9e4b324b.diff"
+      sha256 "e3a7b97e40485d829708bf6013b0755f92f52d00c91bb0f40aa1cdae3cc69e98"
+    end
+  end
 
   livecheck do
     url "https://www.mesa3d.org/news/"
@@ -14,10 +23,11 @@ class Mesa < Formula
   end
 
   bottle do
-    sha256 arm64_big_sur: "c7907e55c7e5c96769c6bfee399b6561200492a7a2ade0267ee662c9b7a40544"
-    sha256 big_sur:       "b8e5a44cde3fa42be9dd467d1f9dec8819b63523cc65f7bcbe75a0519674c524"
-    sha256 catalina:      "dc9dae9f087cc09fcb9c66904dde648095a453f2e0c472eb602d163347b7faac"
-    sha256 mojave:        "69ac1af2a4c12811a0efabfef9d33b3ccb8abaa61385b8edbfc4cc6a1ab36fd6"
+    sha256 arm64_big_sur: "c9d78d2751395d2f0643239c52696310a950d574130f5505706f726739d4afa4"
+    sha256 big_sur:       "489c222d695c1bbefa296c26d5bb46c6ce9f3f2a5c18ef87f417d1ac0c8b420e"
+    sha256 catalina:      "6eae667d3f094cc70d2bc6581198385f771e0f82317e2d46ee6592b7bb060b35"
+    sha256 mojave:        "55745e24b051eefda1d4edc13ee20c367c53ecf05ec96047954c2065e8539950"
+    sha256 x86_64_linux:  "a4203fbcfbe04e5c441abe8f4ae9145ff1e5dfd15be2a713039be36c9391800e"
   end
 
   depends_on "meson" => :build
@@ -38,6 +48,7 @@ class Mesa < Formula
   uses_from_macos "zlib"
 
   on_linux do
+    depends_on "gcc"
     depends_on "lm-sensors"
     depends_on "libelf"
     depends_on "libxfixes"
@@ -53,6 +64,8 @@ class Mesa < Formula
     depends_on "wayland-protocols"
   end
 
+  fails_with gcc: "5"
+
   resource "Mako" do
     url "https://files.pythonhosted.org/packages/5c/db/2d2d88b924aa4674a080aae83b59ea19d593250bfe5ed789947c21736785/Mako-1.1.4.tar.gz"
     sha256 "17831f0b7087c313c0ffae2bcbbd3c1d5ba9eeac9c38f2eb7b50e8c99fe9d5ab"
@@ -66,11 +79,6 @@ class Mesa < Formula
   resource "gl_wrap.h" do
     url "https://gitlab.freedesktop.org/mesa/demos/-/raw/faaa319d704ac677c3a93caadedeb91a4a74b7a7/src/util/gl_wrap.h"
     sha256 "c727b2341d81c2a1b8a0b31e46d24f9702a1ec55c8be3f455ddc8d72120ada72"
-  end
-
-  patch do
-    url "https://gitlab.freedesktop.org/mesa/mesa/-/commit/50064ad367449afad03c927f7e572c138b05c5d4.diff"
-    sha256 "2f17f8f03a54350025fff65ec6d410b1c2f924a30199551457a0f43a9bada7b6"
   end
 
   def install

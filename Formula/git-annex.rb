@@ -1,16 +1,16 @@
 class GitAnnex < Formula
   desc "Manage files with git without checking in file contents"
   homepage "https://git-annex.branchable.com/"
-  url "https://hackage.haskell.org/package/git-annex-8.20210621/git-annex-8.20210621.tar.gz"
-  sha256 "16a52c8c69d4f3396c530ce413b8fe851250477e5870f140614031f2fbab2806"
+  url "https://hackage.haskell.org/package/git-annex-8.20210714/git-annex-8.20210714.tar.gz"
+  sha256 "fefb2629f39331efafe910853b316d1670f2e9a5cddec498237bb28a91c27f5e"
   license all_of: ["AGPL-3.0-or-later", "BSD-2-Clause", "BSD-3-Clause",
                    "GPL-2.0-only", "GPL-3.0-or-later", "MIT"]
   head "git://git-annex.branchable.com/"
 
   bottle do
-    sha256 cellar: :any, big_sur:  "fc2d4d8afb029cc8d8562713947955a9ac1e5bce35be535f2877e432bbc84fa6"
-    sha256 cellar: :any, catalina: "5fc5a92a8bc5e27cd26485ab472ef6dc4360d454fa2590d61ae433f5fa1adff0"
-    sha256 cellar: :any, mojave:   "a53bbad8126611591e1611ec4d8ddf1f07027719735d9c5fdaa1b5f98cdbf9b8"
+    sha256 cellar: :any, big_sur:  "432e878a4fa91cd2a74ec5e736dc7019e48af85cb7de22c03e06fca4ac0eb214"
+    sha256 cellar: :any, catalina: "29f4ab6a533376c0b465679e507b6a26e2d23defcd547cfeeea51af3ae9b49cf"
+    sha256 cellar: :any, mojave:   "072a3cf538a17bf9d3ebffc699f6e8fa62a9c4c629712689d557c19f3dd1b04e"
   end
 
   depends_on "cabal-install" => :build
