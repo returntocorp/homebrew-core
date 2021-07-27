@@ -1,8 +1,8 @@
 class Packer < Formula
   desc "Tool for creating identical machine images for multiple platforms"
   homepage "https://packer.io"
-  url "https://github.com/hashicorp/packer/archive/v1.7.3.tar.gz"
-  sha256 "f08e52321cc5a3ef6651107f8dff29f23cfc6e75f2fdfa87da33d2b5d73e0267"
+  url "https://github.com/hashicorp/packer/archive/v1.7.4.tar.gz"
+  sha256 "00a093fa302bde7b1eb01de85474524479126cc91309879f0c33f413918506a5"
   license "MPL-2.0"
   head "https://github.com/hashicorp/packer.git"
 
@@ -12,24 +12,20 @@ class Packer < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "ce7fa76aebf2cd8e73214ef7ac51f262addd7baa037839752b195a2a76f4f90c"
-    sha256 cellar: :any_skip_relocation, big_sur:       "3e317dfd6bc295c247f6d31fb6bbb159156709fd1a6c1f7383f01e979e259586"
-    sha256 cellar: :any_skip_relocation, catalina:      "840fb5bbc4c541debdf7083d5683f4c46f4ff3025a21055ee0e393a1562046f6"
-    sha256 cellar: :any_skip_relocation, mojave:        "da3cfaa2a21c2c94381f7e8c8c6e5bf28b046a62f53dc539dccf9a83518c3842"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e9062232c9659dc6c5feef4ce187181a23dc86c86cd783bb95dbef51d794886f"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "5857e3b4d569263e92c0215bfbbe0da92396d12573916efb2d8c214afd2c8a14"
+    sha256 cellar: :any_skip_relocation, big_sur:       "a3904f2fbc7fa390464436188302479a0612ed9ec80a771542d7c6dc54b797c0"
+    sha256 cellar: :any_skip_relocation, catalina:      "b0a55acb7d294f529db1cb83533d837154ac8d3c174d2ca089233a3bf27be06e"
+    sha256 cellar: :any_skip_relocation, mojave:        "9bdf0e9d68b8cace130ebd58e88821da155954f575893f2dbe9b97bec7e38562"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "28427704a6de254be710445deff553349ba3300416758559ecf8e74c065353e1"
   end
 
   depends_on "go" => :build
 
-  # Fix for https://github.com/hashicorp/packer/issues/11140
-  patch do
-    url "https://github.com/hashicorp/packer/commit/0202280167618a95cbd1ec7c57b5ffc1c9f369ba.patch?full_index=1"
-    sha256 "48bb26272d44ace70791f94eae8838c3a64c1f2eb9562f24b39b1e042fc61526"
-  end
-
   def install
     system "go", "build", *std_go_args(ldflags: "-s -w")
+
+    # Allow packer to find plugins in Homebrew prefix
+    bin.env_script_all_files libexec/"bin", PACKER_PLUGIN_PATH: "$PACKER_PLUGIN_PATH:#{HOMEBREW_PREFIX/"bin"}"
 
     zsh_completion.install "contrib/zsh-completion/_packer"
   end

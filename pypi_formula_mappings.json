@@ -22,9 +22,10 @@
     "exclude_packages": ["pillow", "tabulate"]
   },
   "athenacli": {
-    "exclude_packages": ["tabulate"]
+    "exclude_packages": ["six", "tabulate"]
   },
   "black": "black[d]",
+  "bpytop": "bpytop",
   "breezy": {
     "exclude_packages": ["six"]
   },
@@ -140,6 +141,7 @@
   "protobuf": {
     "exclude_packages": ["six"]
   },
+  "pydocstyle": "pydocstyle[toml]",
   "pyqt-builder": {
     "exclude_packages": ["packaging", "pyparsing", "sip", "toml"]
   },

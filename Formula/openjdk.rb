@@ -20,11 +20,12 @@ class Openjdk < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_big_sur: "040b807b1c754ccbb5316484a42089e64d29f0321dc6531017020095b8222c7a"
-    sha256 cellar: :any, big_sur:       "55c120ab6b02ddcf7f3f22678377d70c89ac625239b5af396c60a9b2840f0995"
-    sha256 cellar: :any, catalina:      "04435cc60a4cdf18dade6923a8a039a8ed22ff900068ec95c250f7ea055f381a"
-    sha256 cellar: :any, mojave:        "ea08c6570290923349fa4f908070445c0c4dd5fef9e65b401eb2323f0a8fddd6"
-    sha256               x86_64_linux:  "cba551666666eb51b9d63d95b59a216206d859e759b87b1e73f06d58e896dc78"
+    rebuild 1
+    sha256 cellar: :any, arm64_big_sur: "f34c581df9abeaba1e1ffb39e1274b2ce1c12e1a1855cecda55437bfe095e26d"
+    sha256 cellar: :any, big_sur:       "cf4fe13bd4dbe7864304d85b9249183ad8740587b223772b8883a63d0da681e0"
+    sha256 cellar: :any, catalina:      "1035aa2f2dcfe53985d06884ed45a8343fe4fa561a1ec81bd0364e922ae4324b"
+    sha256 cellar: :any, mojave:        "0010153ca765159d01379fe16186a956624d05399ee7bd874ab261cf68c2f3a5"
+    sha256               x86_64_linux:  "fe6b6e8afe79afa9f8d7ab2d9d825c27c94050a833a3584327069c21002421ca"
   end
 
   keg_only :shadowed_by_macos
@@ -136,9 +137,10 @@ class Openjdk < Formula
     on_macos do
       jdk = Dir["build/*/images/jdk-bundle/*"].first
       libexec.install jdk => "openjdk.jdk"
-      bin.install_symlink Dir["#{libexec}/openjdk.jdk/Contents/Home/bin/*"]
-      include.install_symlink Dir["#{libexec}/openjdk.jdk/Contents/Home/include/*.h"]
-      include.install_symlink Dir["#{libexec}/openjdk.jdk/Contents/Home/include/darwin/*.h"]
+      bin.install_symlink Dir[libexec/"openjdk.jdk/Contents/Home/bin/*"]
+      include.install_symlink Dir[libexec/"openjdk.jdk/Contents/Home/include/*.h"]
+      include.install_symlink Dir[libexec/"openjdk.jdk/Contents/Home/include/darwin/*.h"]
+      man1.install_symlink Dir[libexec/"openjdk.jdk/Contents/Home/man/man1/*"]
 
       if Hardware::CPU.arm?
         dest = libexec/"openjdk.jdk/Contents/Home/lib/JavaNativeFoundation.framework"
@@ -147,15 +149,16 @@ class Openjdk < Formula
         cp_r "#{framework_path}/JavaNativeFoundation.framework", dest, remove_destination: true
 
         # Replace Apple signature by ad-hoc one (otherwise relocation will break it)
-        system "codesign", "-f", "-s", "-", "#{dest}/Versions/A/JavaNativeFoundation"
+        system "codesign", "-f", "-s", "-", dest/"Versions/A/JavaNativeFoundation"
       end
     end
 
     on_linux do
       libexec.install Dir["build/linux-x86_64-server-release/images/jdk/*"]
-      bin.install_symlink Dir["#{libexec}/bin/*"]
-      include.install_symlink Dir["#{libexec}/include/*.h"]
-      include.install_symlink Dir["#{libexec}/include/linux/*.h"]
+      bin.install_symlink Dir[libexec/"bin/*"]
+      include.install_symlink Dir[libexec/"include/*.h"]
+      include.install_symlink Dir[libexec/"include/linux/*.h"]
+      man1.install_symlink Dir[libexec/"man/man1/*"]
     end
   end
 

@@ -4,6 +4,7 @@ class Gdal < Formula
   url "https://download.osgeo.org/gdal/3.3.1/gdal-3.3.1.tar.xz"
   sha256 "48ab00b77d49f08cf66c60ccce55abb6455c3079f545e60c90ee7ce857bccb70"
   license "MIT"
+  revision 2
 
   livecheck do
     url "https://download.osgeo.org/gdal/CURRENT/"
@@ -11,10 +12,10 @@ class Gdal < Formula
   end
 
   bottle do
-    sha256 arm64_big_sur: "bb0f34fc51add0c927e6ad4c2215c9a9e5e2ad6453c2cf61633f147d6a8e6d57"
-    sha256 big_sur:       "c319713a6a54af9d2dc1828fa0f9db2517994b8826677a977e831931d8477e9f"
-    sha256 catalina:      "3e10294a70a67c0d83f684a46df3ac07ac8f1210560b5211481751781ea0b1f9"
-    sha256 mojave:        "21dff99818fad856f43a3d8631214f35bbc60a6f26f0aa632d49969516261b55"
+    sha256 arm64_big_sur: "f5dd9598572139ae6950bf8ba3c882ab35239e8a7970b3beef8cbded353e6aec"
+    sha256 big_sur:       "afe23005ca5c660e2a05d670b33935325ef4e474d2873cbb6baa177f3eac7077"
+    sha256 catalina:      "e618654ce376c7f9c2602299a1b8dbf56e439d7d941c7405b8d22223fb83b892"
+    sha256 mojave:        "6c569419861b1d340e2db1738c8562cb34f1950581695cfc5b7b2480a9943e7a"
   end
 
   head do
@@ -43,7 +44,7 @@ class Gdal < Formula
   depends_on "numpy"
   depends_on "openjpeg"
   depends_on "pcre"
-  depends_on "poppler"
+  depends_on "poppler-qt5"
   depends_on "proj@7"
   depends_on "python@3.9"
   depends_on "sqlite" # To ensure compatibility with SpatiaLite

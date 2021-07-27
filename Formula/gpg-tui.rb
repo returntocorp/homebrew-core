@@ -1,15 +1,15 @@
 class GpgTui < Formula
   desc "Manage your GnuPG keys with ease! 🔐"
   homepage "https://github.com/orhun/gpg-tui"
-  url "https://github.com/orhun/gpg-tui/archive/refs/tags/v0.7.0.tar.gz"
-  sha256 "49c04725d6747ffdf1cb84ce733213869ccc3bd36aa2752aa9af0c5c04addc34"
+  url "https://github.com/orhun/gpg-tui/archive/refs/tags/v0.7.3.tar.gz"
+  sha256 "607523580019948f9bf9cebd9d434748ff4009b8bae07f9708310fe7f9e7fb73"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any, arm64_big_sur: "26261ddc9d1ad5ddfe9b7d25347c4302c945539206d28095e9a479ea61e26d64"
-    sha256 cellar: :any, big_sur:       "46a12e12bd7673cb851650a0c17122f757633efd9d0e6f577002cc61bbd1981b"
-    sha256 cellar: :any, catalina:      "3fae4cb020c7a6f47faee651c8dda3e2b4949bccbfc1ddfcf8cf8b9644f3a4b9"
-    sha256 cellar: :any, mojave:        "31e492cf2d8d0b2012ea35c32de589fe3117eb75ed0529010bdc57a11e01b88c"
+    sha256 cellar: :any, arm64_big_sur: "06efae84d007c155647784aa20a8bb165f9fbe11b44c9c621aad9a2ab46c3395"
+    sha256 cellar: :any, big_sur:       "0386a72fd124e670aa2bc38a6878bba85e28264b0655500c2dc9ed49553b370f"
+    sha256 cellar: :any, catalina:      "45fa86f8edbca82be14efe8fd642d1f721e6baffa34d0235cf3f06fb63921a6a"
+    sha256 cellar: :any, mojave:        "a749e0d4323f3b6a786b3c6b02f5e90ffd6ce8ac995add8042a4b35484d3dee8"
   end
 
   depends_on "rust" => :build

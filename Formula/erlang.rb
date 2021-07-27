@@ -2,9 +2,10 @@ class Erlang < Formula
   desc "Programming language for highly scalable real-time systems"
   homepage "https://www.erlang.org/"
   # Download tarball from GitHub; it is served faster than the official tarball.
-  url "https://github.com/erlang/otp/releases/download/OTP-24.0.3/otp_src_24.0.3.tar.gz"
-  sha256 "64a70fb19da9c94d11f4e756998a2e91d8c8400d7d72960b15ad544af60ebe45"
+  url "https://github.com/erlang/otp/releases/download/OTP-24.0.4/otp_src_24.0.4.tar.gz"
+  sha256 "34d1f17425ed75add154261a9df2caeddb408b269b43275e5231c44f4fe5658b"
   license "Apache-2.0"
+  revision 1
 
   livecheck do
     url :stable
@@ -12,10 +13,11 @@ class Erlang < Formula
   end
 
   bottle do
-    sha256 cellar: :any, arm64_big_sur: "8ebaae00022e7bb359df1fac2a45ecb371cb5cc96b69d18f6a167040aae3a671"
-    sha256 cellar: :any, big_sur:       "3a2620b1a73503d3b30ae868cdd9259e268088a865204eb077778ef41f1978e9"
-    sha256 cellar: :any, catalina:      "f7f30f0c895c4ca94db37bf5860b36dbebdef94422628f460eb82ba42d3a1c33"
-    sha256 cellar: :any, mojave:        "90129ccd3c3aeea5d09776cd2453e98c39a5facc43c7f834277f729959082a48"
+    sha256 cellar: :any,                 arm64_big_sur: "f64be50ba4832670ad3d6e99f2d521b93e34e92d1abb8d69b6b6da867a313fd8"
+    sha256 cellar: :any,                 big_sur:       "f2e9cbb3540856bddeb587c6db0e4dfb6f43c571cb92f08f13f35bc163b815d3"
+    sha256 cellar: :any,                 catalina:      "a9d4f3dd28848c705120e9c41afd0fbfc84419e8383d02e2a1e90331349a5350"
+    sha256 cellar: :any,                 mojave:        "8c757c75b2bceed3baa1eb34ec1dc27a037a535f99a6f3324082f58f9ac63336"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "526b648eb762b238dc249d586868de4adb9057c3ba296fcdcf05fa0a87a904e8"
   end
 
   head do
@@ -27,7 +29,7 @@ class Erlang < Formula
   end
 
   depends_on "openssl@1.1"
-  depends_on "wxmac" # for GUI apps like observer
+  depends_on "wxwidgets" # for GUI apps like observer
 
   resource "html" do
     url "https://www.erlang.org/download/otp_doc_html_24.0.tar.gz"
