@@ -2,17 +2,17 @@ class Tile38 < Formula
   desc "In-memory geolocation data store, spatial index, and realtime geofence"
   homepage "https://tile38.com/"
   url "https://github.com/tidwall/tile38.git",
-      tag:      "1.25.1",
-      revision: "6e52e3a7eb49266b5c91d31debf44d2038892ebf"
+      tag:      "1.25.2",
+      revision: "3b77a24892365708bf9d766126af0e4f11c00d78"
   license "MIT"
   head "https://github.com/tidwall/tile38.git"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "f885a351d2b12fb8088ef34f744cbfbfcd44964be0072e8cd8ad8c828f1d6017"
-    sha256 cellar: :any_skip_relocation, big_sur:       "6a03ec1ecd38ffe545f48d940dc7c0d048e368d3af4209baa5b20f652a0d85ae"
-    sha256 cellar: :any_skip_relocation, catalina:      "5bbbf9482a19c252cbf5a275e608fbda0fb2c92651e41fcbfd2f351aa326b757"
-    sha256 cellar: :any_skip_relocation, mojave:        "261862ae6a512b7abb448afdb7ff99a8ee3d407d4969461ad85f75a4f4686597"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "91112b409a6ea318e969a420c2a6d150dd20081139086ff45bef748dbf93466a"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "5124b25573fbe94dab18d614aae7ef3bc1def249979c39a623d43ae5bf771330"
+    sha256 cellar: :any_skip_relocation, big_sur:       "2e20df9023c9b28ffc887ff97a684b0c2f5b07ff3317504664ca7a19c6fba072"
+    sha256 cellar: :any_skip_relocation, catalina:      "05ccb8f677482ad38bf372e6bbf0559e029e715b64b46fa123b2dec127fd7737"
+    sha256 cellar: :any_skip_relocation, mojave:        "8ceb1cac7e4ecb5e6ac4eb7f582298ef2dfb93b8a04522c7f46c17b625b02d62"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c714de98b4d1463f3340c52c91adb635f008d207fca09cbff511229a7c6f38f8"
   end
 
   depends_on "go" => :build
@@ -43,38 +43,12 @@ class Tile38 < Formula
     EOS
   end
 
-  plist_options manual: "tile38-server -d #{HOMEBREW_PREFIX}/var/tile38/data"
-
-  def plist
-    <<~EOS
-      <?xml version="1.0" encoding="UTF-8"?>
-      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-      <plist version="1.0">
-        <dict>
-          <key>KeepAlive</key>
-          <dict>
-            <key>SuccessfulExit</key>
-            <false/>
-          </dict>
-          <key>Label</key>
-          <string>#{plist_name}</string>
-          <key>ProgramArguments</key>
-          <array>
-            <string>#{opt_bin}/tile38-server</string>
-            <string>-d</string>
-            <string>#{datadir}</string>
-          </array>
-          <key>RunAtLoad</key>
-          <true/>
-          <key>WorkingDirectory</key>
-          <string>#{var}</string>
-          <key>StandardErrorPath</key>
-          <string>#{var}/log/tile38.log</string>
-          <key>StandardOutPath</key>
-          <string>#{var}/log/tile38.log</string>
-        </dict>
-      </plist>
-    EOS
+  service do
+    run [opt_bin/"tile38-server", "-d", var/"tile38/data"]
+    keep_alive true
+    working_dir var
+    log_path var/"log/tile38.log"
+    error_log_path var/"log/tile38.log"
   end
 
   test do

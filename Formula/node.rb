@@ -1,8 +1,8 @@
 class Node < Formula
   desc "Platform built on V8 to build network applications"
   homepage "https://nodejs.org/"
-  url "https://nodejs.org/dist/v16.5.0/node-v16.5.0.tar.xz"
-  sha256 "3f37e38dd1129b6905f8d184616d41b3ab8433fa54cadce8a8c18b7a8bbcaa99"
+  url "https://nodejs.org/dist/v16.6.2/node-v16.6.2.tar.xz"
+  sha256 "8794cba1f971e4200a38690c76d7cc0a3bd1cba96fbf4305dfbe21fc459d79eb"
   license "MIT"
   head "https://github.com/nodejs/node.git"
 
@@ -12,11 +12,11 @@ class Node < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_big_sur: "b473cf46290583c4ea9e170fb1ffdf74f3bde26d1611b6bd3912aef94214ef95"
-    sha256 cellar: :any,                 big_sur:       "f5c5fbc689ad6a0b535823f0f8ff12f4e147106553d5236f79f2a1c04750271b"
-    sha256 cellar: :any,                 catalina:      "b48f381aa757405f490b14c6afff6ead6d1aa3f023590c10908f5f4d9b6bd9ed"
-    sha256 cellar: :any,                 mojave:        "f9d2569794d3dc97835acb90bfc3537f095467fbb41b81ea7c1b4adc6ea6d409"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5f8f427d4b5eddf1b675a361f058e2d40b8a278f5d48ef68568b83ce6ddf5eff"
+    sha256 cellar: :any,                 arm64_big_sur: "a4ac9e762614afcaabaf49dae97fd16508349837b7907c67077d74909241bc0c"
+    sha256 cellar: :any,                 big_sur:       "203bec249daa0ee6216e971bb6ea1dbdd6e42c6725dc3a07d871747912a4fba6"
+    sha256 cellar: :any,                 catalina:      "3e54086b5d8e381757412656b1a081443a06730a660b4cbd4d54bc9622d3600d"
+    sha256 cellar: :any,                 mojave:        "b054fe6a40c93e3fe9c42f5cd2fa8001b37b777776e100390edcfc26414e1da5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c17e88a3a91d76eec5db024614a9da4126fd0dade3ad14d0e20014492602a490"
   end
 
   depends_on "pkg-config" => :build
@@ -30,11 +30,29 @@ class Node < Formula
 
   uses_from_macos "zlib"
 
+  on_linux do
+    depends_on "gcc"
+  end
+
+  fails_with :clang do
+    build 1099
+    cause "Node requires Xcode CLT 11+"
+  end
+
+  fails_with gcc: "5"
+
   # We track major/minor from upstream Node releases.
   # We will accept *important* npm patch releases when necessary.
   resource "npm" do
-    url "https://registry.npmjs.org/npm/-/npm-7.19.1.tgz"
-    sha256 "93e9584be1b5109afe4750275f83c42611946c83801c7a9b5d122aacc0c6a957"
+    url "https://registry.npmjs.org/npm/-/npm-7.20.3.tgz"
+    sha256 "bf73538dbcd933e5a9d9575c0c39539aee3e70b32e27837037681662d3bc2c0b"
+  end
+
+  # Fix build with brewed c-ares.
+  # https://github.com/nodejs/node/pull/39739
+  patch do
+    url "https://github.com/nodejs/node/commit/8699aa501c4d4e1567ebe8901e5ec80cadaa9323.patch?full_index=1"
+    sha256 "678643c79258372d5054d3da16bc0c5db17130f151f0e72b6e4f20817987aac9"
   end
 
   def install

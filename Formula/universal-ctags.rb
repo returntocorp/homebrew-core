@@ -1,9 +1,9 @@
 class UniversalCtags < Formula
   desc "Maintained ctags implementation"
   homepage "https://github.com/universal-ctags/ctags"
-  url "https://github.com/universal-ctags/ctags/archive/refs/tags/p5.9.20210704.0.tar.gz"
-  version "p5.9.20210704.0"
-  sha256 "07c01e3ed8163100c9f17d6e74683cdb676a803b43f9ae3c3f2f828c027131d9"
+  url "https://github.com/universal-ctags/ctags/archive/refs/tags/p5.9.20210815.0.tar.gz"
+  version "p5.9.20210815.0"
+  sha256 "a56de2c39090bbe1baa1fc7fcdb50834503f8b2b02edf304d7ab61c76ad82c0d"
   license "GPL-2.0-only"
   head "https://github.com/universal-ctags/ctags.git"
 
@@ -13,11 +13,11 @@ class UniversalCtags < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_big_sur: "9ff4b3e0eb16ab0899b899cf835b0dc9a537f29616831b135ce13b76d1a6a769"
-    sha256 cellar: :any,                 big_sur:       "6916c96a4cc8ddcc226750edac2193cc01c5c32012bbd0dd49ef99c11c537909"
-    sha256 cellar: :any,                 catalina:      "ad7e7d6be8182f77c57677b8599bd5cb6b6ab33e7ec05a17bad185ea4b379ba1"
-    sha256 cellar: :any,                 mojave:        "09329630ec33c4811995d04f22b27951bb860f3717ffbcfbd238550ed4e19462"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e54a50e7f51752f62b8cd076d7d5d335bdc06bc96be222a68615974972df63d4"
+    sha256 cellar: :any,                 arm64_big_sur: "bbe9c4f677f77eefb187e8b9c601d7bec4810482f4046a9243aad5224b1c4203"
+    sha256 cellar: :any,                 big_sur:       "6a433837d045dffe726fd73152ccb775d5b959ac51bb1f9d970fbf510a9df825"
+    sha256 cellar: :any,                 catalina:      "b55d8aec84f3369f97261c14b9cff4126276f156c4e38c80964b6315f18f39fc"
+    sha256 cellar: :any,                 mojave:        "723c6ee51729649f5d84ba90d26b07f582c81a02bba7287b2d3b08b1db6fb663"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c5bc0456fe258f2f84b861ee35db498025a92c2d706b616c0856e2e829c578f6"
   end
 
   depends_on "autoconf" => :build

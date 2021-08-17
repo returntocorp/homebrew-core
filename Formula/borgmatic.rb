@@ -3,16 +3,16 @@ class Borgmatic < Formula
 
   desc "Simple wrapper script for the Borg backup software"
   homepage "https://torsion.org/borgmatic/"
-  url "https://files.pythonhosted.org/packages/74/51/4b0d6c3a86608bda5b4fb1e8a58af2b6ad40a7471c406a9e90f4e3386230/borgmatic-1.5.16.tar.gz"
-  sha256 "8a4daef5494a2e7064518d5b33b92bc19021f39666c64b2986a25e64d14ee31a"
+  url "https://files.pythonhosted.org/packages/41/7a/f5554b18226f6e05b0ce4dc3a652fee30c350cd2c7e647c8adc174a407d0/borgmatic-1.5.18.tar.gz"
+  sha256 "757d54d73cdaf333210e24cb13e0e0b4de912d17222e4b383433ae929287fe9a"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "9ae53d6000db0f59c6588dc1c2670774f7dd13fb33f71471691d08913b6468b5"
-    sha256 cellar: :any_skip_relocation, big_sur:       "ca79c0dda4fcf79f6b7cdb1a3f132b2be646d50b286b5c2a79f614a2736c252d"
-    sha256 cellar: :any_skip_relocation, catalina:      "b2437eee8d09e3b6d67e598581a31f9d2d6c08d66c339c06dbde5af7f34184ad"
-    sha256 cellar: :any_skip_relocation, mojave:        "7ddd53f15c041691625077c42e11e9bf4f06db6474d9a8a5f61243ff3f4bb962"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6fc515910690b5c1cffdb1681cc93d818587b1d6c5424b0c305b913adc9b863c"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "4878b473eab0b3df714a2ea1535d34f86c20777ec6981fb3a734c5ae3930f384"
+    sha256 cellar: :any_skip_relocation, big_sur:       "3624e4d6f5b2070fada6cb58e4e1ceb9b293907b791f7b5c63985d531a588e44"
+    sha256 cellar: :any_skip_relocation, catalina:      "98b369061ccf3c7eaa068eda2fda8eb753d0abae5634e36f49e87d031ad5ef24"
+    sha256 cellar: :any_skip_relocation, mojave:        "0ffe59404b696738490d87e7e9dd0800779ab09e39a6e5166f2e9412c74ccd0f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "26fcf34f67367b69839a2b0e68d1dbdb8cd70c801b5e20d9908a1f16f3aa3550"
   end
 
   depends_on "libyaml"
@@ -29,8 +29,8 @@ class Borgmatic < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/37/fd/05a04d7e14548474d30d90ad0db5d90ee2ba55cd967511a354cf88b534f1/charset-normalizer-2.0.3.tar.gz"
-    sha256 "c46c3ace2d744cfbdebceaa3c19ae691f53ae621b39fd7570f59d14fb7f2fd12"
+    url "https://files.pythonhosted.org/packages/e7/4e/2af0238001648ded297fb54ceb425ca26faa15b341b4fac5371d3938666e/charset-normalizer-2.0.4.tar.gz"
+    sha256 "f23667ebe1084be45f6ae0538e4a5a865206544097e4e8bbcacf42cd02a348f3"
   end
 
   resource "colorama" do

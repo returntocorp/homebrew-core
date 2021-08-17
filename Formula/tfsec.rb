@@ -1,8 +1,8 @@
 class Tfsec < Formula
   desc "Static analysis security scanner for your terraform code"
   homepage "https://tfsec.dev/"
-  url "https://github.com/aquasecurity/tfsec/archive/v0.51.4.tar.gz"
-  sha256 "f33257f21666c5043d14ac9c60c497ab5928ee346f8f2f8798c3b32e36b2d1a1"
+  url "https://github.com/aquasecurity/tfsec/archive/v0.58.4.tar.gz"
+  sha256 "f9d6975695d947af0c923d396d73d75d397a1941ef28d29b5c42f6ff98055d0f"
   license "MIT"
   head "https://github.com/aquasecurity/tfsec.git"
 
@@ -12,11 +12,11 @@ class Tfsec < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_big_sur: "929abc2ae8ee7f1432b27db43e83e0d032db4cea57d232306143b7fdafa67d0e"
-    sha256 cellar: :any_skip_relocation, big_sur:       "2abb26540bd0edaf70e3e3026b8c39a83b9bc578df10a073f62a956d2679ea24"
-    sha256 cellar: :any_skip_relocation, catalina:      "4860005cd6ec788ec54841c0359909ea711b4566ae63fd8787e7ee060f081010"
-    sha256 cellar: :any_skip_relocation, mojave:        "71272323afbf125c1c6bea4538ed1732f085abfc35e40d7c61eee9e08cc51ae4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "84f3cb9af014e16863c59431e4261733d728ba5a6610075f89cee05a387c7965"
+    sha256 cellar: :any_skip_relocation, arm64_big_sur: "f3ca5b7016f9cbe43259a8a22c8ec856d36140df976c7de942f21b2a6a97ae35"
+    sha256 cellar: :any_skip_relocation, big_sur:       "5eb83607f31e40f39464e6ccc7bff1ae4d1b896f6fe87ae97939cbb510c5fa6e"
+    sha256 cellar: :any_skip_relocation, catalina:      "7f84c18fd013024aefd3e64e9ff675394a503acee50858eaff5fc04b84040673"
+    sha256 cellar: :any_skip_relocation, mojave:        "c6df6961c29d5260504ccb6373ce436fccf2408489c11cc36e1ba383b87ea3a7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4d386867174ee4ce476a7febb5eb649cc30062ef4a843e1112ac96198f77cfe9"
   end
 
   depends_on "go" => :build
